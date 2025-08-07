@@ -5,6 +5,8 @@ import com.ayush.ayush.service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired; // Ensure this is imported
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 import java.util.Map;
 import java.util.Optional;
