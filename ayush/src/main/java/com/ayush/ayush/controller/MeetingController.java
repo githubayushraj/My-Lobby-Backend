@@ -11,8 +11,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/meetings")
-@CrossOrigin(origins = "http://localhost:5173") // Or "*" for development
-public class MeetingController {
+@CrossOrigin(origins = {
+    "https://my-lobby-frontend.vercel.app", 
+    "http://localhost:5173"
+})
+    public class MeetingController {
 
     private final MeetingService meetingService;
 
