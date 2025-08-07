@@ -1,0 +1,26 @@
+services:
+  # Janus WebRTC Gateway using your existing local image
+  janus:
+    image: canyan/janus-gateway:latest
+    pull_policy: never
+    container_name: janus
+    restart: unless-stopped
+    ports:
+      - "8088:8888"
+      - "8188:8188"
+
+  # Your Spring Boot Application
+  join-lobby:
+    build:
+      context: .
+    image: join-lobby:latest
+    container_name: join-lobby
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - janus
+    env_file:
+      - .env
+    extra_hosts: # <-- THIS IS THE FIX
+      - "host.docker.internal:host-gateway"
